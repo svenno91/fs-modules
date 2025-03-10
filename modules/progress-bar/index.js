@@ -44,9 +44,10 @@
             height: '100%',
             width: animatedWidth,
             backgroundColor: progressColor,
-            borderRadius: `${borderRadius}px 0 0 ${borderRadius}px`,
+            borderRadius: progressPercentage === 100 ? `${borderRadius}px` : `${borderRadius}px 0 0 ${borderRadius}px`,
             transition: `width ${animationDuration}s ease-in-out`
         };
+        
     
         return React.createElement(
             'div',
@@ -160,6 +161,10 @@
             },
             progressColor: function(value) {
                 this.props.progressColor = value;
+                this.forceUpdate();
+            },
+            borderRadius: function(value) {
+                this.props.borderRadius = value;
                 this.forceUpdate();
             },
             stepLineColor: function(value) {
